@@ -23,6 +23,8 @@ gem 'sass-rails', '~> 5.0', '>= 5.0.4'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'font-awesome-rails', '~> 4.5', '>= 4.5.0.1'
 
+gem 'rename'
+
 gem 'rubocop', '~> 0.39.0', require: false
 
 group :development, :test do
