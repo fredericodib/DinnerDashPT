@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'categories/new'
+
   get 'welcome/index'
 
 
@@ -9,6 +11,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   get "categories/new" => "categories#new"
+  post "categories" => "categories#create"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
