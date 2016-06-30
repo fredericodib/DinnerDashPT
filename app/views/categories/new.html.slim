@@ -1,5 +1,10 @@
-= form_for @category do |f|
-	.form-group
-		= f.label :name
-		= f.text_field :name, class: "form-control"
-	= f.submit 'Enviar', class: 'btn btn-info'
+//= render 'helpers/flash_mensages'
+.panel
+	.panel-heading
+		h1 Create Category
+	.panel-body
+		= form_for @category do |f|
+			.form-group
+				= f.label :name
+				= f.text_field :name, class: "form-control"
+			= f.submit 'Enviar', class: 'btn btn-info'
