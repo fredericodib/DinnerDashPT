@@ -1,0 +1,19 @@
+= render 'layouts/flash_messages'
+section.content
+	div.panel
+		div.panel-heading
+			h1 Categories 
+		div.panel-body
+			table.table.table-bordered
+				thead 
+					tr
+						th Nome
+						th Ações
+				tbody 
+					- @categories.each do |c|
+						tr 
+							td = c.name
+							td 
+								= link_to "Edit", edit_category_path(c.id)
+								| &nbsp;
+								= link_to "Delete", destroy_category_path(c.id), method: :delete

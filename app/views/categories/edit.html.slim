@@ -1,0 +1,10 @@
+= render 'layouts/flash_messages'
+.panel
+	.panel-heading
+		h1 Edit Category
+	.panel-body
+		= form_for @category, method: :patch do |c|
+			.form-group
+				= c.label :name
+				= c.text_field :name, class: "form-control"
+			= c.submit 'Enviar', class: 'btn btn-info'

@@ -10,8 +10,13 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
-  get "categories/new" => "categories#new"
+  get "categories/new" => "categories#new", as: :new_category
   post "categories" => "categories#create"
+  get "categories" => 'categories#index'
+  get "categories/:id/edit" => "categories#edit", as: :edit_category
+  patch "categories/:id" => "categories#update"
+  get 'categories/:id' => 'categories#show', as: :category
+  delete 'categories/:id' => 'categories#destroy', as: :destroy_category
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
