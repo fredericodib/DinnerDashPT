@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   get 'categories/:id' => 'categories#show', as: :category
   delete 'categories/:id' => 'categories#destroy', as: :destroy_category
 
+
+  resources :itens
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
