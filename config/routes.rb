@@ -17,9 +17,9 @@ Rails.application.routes.draw do
   patch "categories/:id" => "categories#update"
   get 'categories/:id' => 'categories#show', as: :category
   delete 'categories/:id' => 'categories#destroy', as: :destroy_category
+  
 
-
-  resources :itens
+  resources :items
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

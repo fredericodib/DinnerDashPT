@@ -1,0 +1,22 @@
+= render 'layouts/flash_messages'
+section.content
+	div.panel
+		div.panel-heading
+			h1 Items 
+		div.panel-body
+			table.table.table-bordered
+				thead 
+					tr
+						th Nome
+						th Descrição
+						th Preço
+						th Ações
+				tbody 
+					- @items.each do |c|
+						tr 
+							td = c.name
+							td = c.description
+							td = c.price
+							
+
+							
