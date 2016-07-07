@@ -17,6 +17,11 @@ section.content
 							td = c.name
 							td = c.description
 							td = c.price
+							td 
+								= link_to "Edit", edit_item_path(c.id)
+								| &nbsp;
+								= link_to "Delete", item_path(c.id), method: :delete
+
 							
 
 							

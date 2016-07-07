@@ -10,6 +10,28 @@ class ItemsController < ApplicationController
   			redirect_to new_item_path, alert: 'Error creating item'
   		end
 	end
+
+	def edit
+  		@item = Item.find(params[:id])
+  	end
+
+  	def update
+  		@item = Item.find(params[:id])
+  		if @item.update(items_params)
+  			redirect_to items_path, notice: 'Item created successful'
+  		else
+  			redirect_to edit_item_path(@item.id), alert: 'Error creating item'
+  		end
+  	end
+
+  	def destroy
+  		@item = Item.find(params[:id])
+  		@item.destroy
+  		redirect_to items_path, notice: 'Item destroyed successful'
+  	end
+
+
+
 	def index
 		@items = Item.all
 	end
