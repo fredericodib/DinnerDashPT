@@ -1,27 +1,6 @@
 = render 'layouts/flash_messages'
-section.content
-	div.panel
-		div.panel-heading
-			h1 Items 
-		div.panel-body
-			table.table.table-bordered
-				thead 
-					tr
-						th Nome
-						th Descrição
-						th Preço
-						th Ações
-				tbody 
-					- @items.each do |c|
-						tr 
-							td = c.name
-							td = c.description
-							td = c.price
-							td 
-								= link_to "Edit", edit_item_path(c.id)
-								| &nbsp;
-								= link_to "Delete", item_path(c.id), method: :delete
 
-							
-
-							
+h1 Items avaliables
+br
+#items_list
+	= render @items
