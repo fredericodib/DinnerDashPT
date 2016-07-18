@@ -21,11 +21,11 @@ section.panel
 					.row
 						=f.collection_check_boxes :category_ids, @categories, \
 							:id, :name do |category|
-		            			.col-sm-2
-		              				= category.check_box class: "icheck-me", \
-		                 				data: { 'skin' => 'square', 'color' => 'blue' }
-		              				| &nbsp;
-		              				= category.text
+                			.col-sm-2
+                  				= category.check_box class: "icheck-me", \
+                     				data: { 'skin' => 'square', 'color' => 'blue' }
+                  				| &nbsp;
+                  				= category.text
             .form-group
         		/ = f.label :item_photo, "class": "col-sm-2 control-label"
         		.col-sm-10.col-sm-offset-2

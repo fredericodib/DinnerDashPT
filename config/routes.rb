@@ -15,11 +15,14 @@ Rails.application.routes.draw do
   get "categories" => 'categories#index'
   get "categories/:id/edit" => "categories#edit", as: :edit_category
   patch "categories/:id" => "categories#update"
+  get "categories/:id" => "categories#show"
   get 'categories/:id' => 'categories#show', as: :category
   delete 'categories/:id' => 'categories#destroy', as: :destroy_category
   
 
   resources :items
+
+  get '/categories(/:value)/items' => "items#categories"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

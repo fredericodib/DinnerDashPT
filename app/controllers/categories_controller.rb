@@ -11,6 +11,10 @@ class CategoriesController < ApplicationController
   	end
   end
 
+  def show
+    
+  end
+
   def index
   	@categories = Category.all
   end

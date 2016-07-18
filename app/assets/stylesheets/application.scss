@@ -11,6 +11,8 @@
  * file per style scope.
  */
 
+@import 'icheck/futurico/futurico';
+@import 'icheck/square/_all'; //includes all color schemes
 @import 'base/bases';
 @import 'layout/layouts';
 @import 'module/modules';

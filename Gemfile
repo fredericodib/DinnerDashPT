@@ -42,4 +42,4 @@ group :production do
 end
 
 
-#gem 'icheck-rails'
+gem 'icheck-rails'

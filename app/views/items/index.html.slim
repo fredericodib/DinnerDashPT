@@ -1,6 +1,17 @@
 = render 'layouts/flash_messages'
 
+.row
+	br
+	.col-md-offset-9.col-md-3
+		label Filter Categories
+		select#categories__select.select.form-control.m-b-3
+			option[value="0"] All Categories
+			- @categories.each do |c|
+				option value=( c.id ) = c.name
+
+br
+
 h1 Items avaliables
 br
-#items_list
+#items__list
 	= render @items

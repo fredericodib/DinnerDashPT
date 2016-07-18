@@ -31,14 +31,27 @@ class ItemsController < ApplicationController
   		redirect_to items_path, notice: 'Item destroyed successful'
   	end
 
+  	def categories
+  		if params[:value].nil?
+    		@items = Item.all
+    	else
+    		@category = Category.find(params[:value])
+    		@items = @category.items
+    	end
+    	respond_to do |format|
+    		format.js { render :items }
+    		format.json { render :items }
+    	end
+  	end
 
 
 	def index
 		@items = Item.all
+		@categories = Category.all
 	end
 
 	private
   		def items_params
-  			params.require(:item).permit(:name, :description, :price)
+  			params.require(:item).permit(:name, :description, :price, category_ids: [])
   		end
 end
