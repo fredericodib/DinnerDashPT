@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
+  get '/categories(/:value)/items' => "items#categories"
+
   get "categories/new" => "categories#new", as: :new_category
   post "categories" => "categories#create"
   get "categories" => 'categories#index'
@@ -22,7 +24,7 @@ Rails.application.routes.draw do
 
   resources :items
 
-  get '/categories(/:value)/items' => "items#categories"
+  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
