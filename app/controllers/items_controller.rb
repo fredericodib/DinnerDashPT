@@ -5,6 +5,8 @@ class ItemsController < ApplicationController
 	end
 	def create
 		@item = Item.new (items_params)
+		@item.item_photo = item_photo_param
+		
   		if @item.save
   			redirect_to items_path, notice: 'Item created sucessful'
   		else
@@ -18,6 +20,8 @@ class ItemsController < ApplicationController
 
   	def update
   		@item = Item.find(params[:id])
+  		@item.item_photo = item_photo_param
+
   		if @item.update(items_params)
   			redirect_to items_path, notice: 'Item created successful'
   		else
@@ -53,5 +57,9 @@ class ItemsController < ApplicationController
 	private
   		def items_params
   			params.require(:item).permit(:name, :description, :price, category_ids: [])
+  		end
+
+  		def item_photo_param
+  			params.require(:item).fetch(:item_photo, {})
   		end
 end
