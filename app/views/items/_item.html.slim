@@ -10,4 +10,9 @@
 					p = item.description
 				.col-sm-3
 					span = item.price
+			.pull-right
+        		= link_to items_path do
+          			= fa_icon "cart-plus", class: "dd__primary__color"
+			.pull-left
+          		= link_to "Delete", destroy_item_path(item.id), method: :delete
 			

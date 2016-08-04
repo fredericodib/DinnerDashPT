@@ -9,9 +9,7 @@ html
     = csrf_meta_tags
 
   body.skin-black.pace-done
-	header.header
-		= link_to "Dinner Dash", root_path, class: 'logo'
-	nav.navbar.navbar-static-top 
+  	= render 'layouts/header'
 		div.wrapper.row-offcanvas.row-offcanvas-left
 	aside.left-side.sidebar-offcanvas
 		section.sidebar

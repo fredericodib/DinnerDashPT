@@ -1,0 +1,14 @@
+= render 'layouts/flash_messages'
+section.login-page
+  .form
+    = form_tag login_path, id: "dd__login" do
+      = label_tag :nickname
+      = text_field_tag :nickname
+
+      = label_tag :password
+      = password_field_tag :password
+
+      br
+      = submit_tag "Sign in"
+      span Not registered yet? &nbsp;
+      = link_to "Create an account", sign_up_path

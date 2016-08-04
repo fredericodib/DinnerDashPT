@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :authorize, only: [:destroy, :new]
+  
 	def new
 		@item = Item.new
 		@categories = Category.all

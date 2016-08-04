@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  before_action :authorize, only: [:destroy, :new, :edit]
   def new
   	@category = Category.new
   end
