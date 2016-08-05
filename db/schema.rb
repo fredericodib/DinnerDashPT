@@ -11,10 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160803193202) do
+ActiveRecord::Schema.define(version: 20160804182048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -26,6 +31,17 @@ ActiveRecord::Schema.define(version: 20160803193202) do
     t.integer "item_id",     null: false
     t.integer "category_id", null: false
   end
+
+  create_table "item_inside_carts", force: :cascade do |t|
+    t.integer  "item_id"
+    t.integer  "cart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "quantity"
+  end
+
+  add_index "item_inside_carts", ["cart_id"], name: "index_item_inside_carts_on_cart_id", using: :btree
+  add_index "item_inside_carts", ["item_id"], name: "index_item_inside_carts_on_item_id", using: :btree
 
   create_table "items", force: :cascade do |t|
     t.string   "name"
@@ -45,4 +61,6 @@ ActiveRecord::Schema.define(version: 20160803193202) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "item_inside_carts", "carts"
+  add_foreign_key "item_inside_carts", "items"
 end

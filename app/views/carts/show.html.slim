@@ -1,0 +1,45 @@
+.panel
+  .panel-heading
+    h1 My cart
+  .panel-body
+      - if @cart.empty?
+        h2 The cart is empty.
+      - else
+        table.table.table-bordered
+          thead
+            tr
+              th Name
+              th Unit Price
+              th Quantity
+              th Item Total Price
+              th Add Item
+              th Remove Item
+              th Remove All
+          tbody
+            - @cart.items_inside.each do |f|
+              tr
+                td = f.item.name
+                td = f.item.price
+                td = f.quantity
+                td = f.sub_total
+                td
+                  = link_to add_to_cart_path(f.item.id) do
+                    span Add item  
+                    = fa_icon "plus-square", class: "dd__primary__color"
+                td
+                  = link_to remove_from_cart_path(f.item.id) do
+                    span Remove item 
+                    = fa_icon "minus-square", class: "dd__primary__color"
+                td
+                  = link_to remove_all_from_cart_path(f.item.id) do
+                    span Remove all
+        .pull-right
+          strong Total: &nbsp;
+          = @cart.total_price
+
+
+      ul.nav.navbar-nav
+        li = link_to root_path do
+          span Voltar para navegação
+                
+        

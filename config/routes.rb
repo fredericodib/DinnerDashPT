@@ -31,6 +31,11 @@ Rails.application.routes.draw do
   resources :items
 
   delete 'items/:id' => 'items#destroy', as: :destroy_item
+
+  get '/current_cart/' => 'carts#show', as: :current_cart
+  get '/add_to_cart/:item_id' => 'carts#add_to_cart', as: :add_to_cart
+  get '/remove_from_cart/:item_id' => 'carts#remove_from_cart', as: :remove_from_cart
+  get '/remove_all_from_cart/:item_id' => 'carts#remove_all_from_cart', as: :remove_all_from_cart
   
 
   # Example of regular route:

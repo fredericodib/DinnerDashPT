@@ -3,12 +3,16 @@ header.header
 nav.navbar.navbar-static-top
 	.navbar-right
 		ul.nav.navbar-nav
+            li
+                = link_to current_cart_path do
+                    span My Cart  
+                    = fa_icon "cart-plus"
         	- if current_user
           		li.dropdown
         			a.dropdown-toggle[data-toggle="dropdown"]
          				= fa_icon "user"
             			| &nbsp;
-            			span = current_user.full_name
+            			span = current_user.nickname
             			li
             				= link_to logout_path do
             					span Logout 

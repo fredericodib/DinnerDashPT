@@ -1,35 +1,38 @@
 = render 'layouts/flash_messages'
 
 section.login-page
-  .form
-    = form_for @user, :html => {:class => "form-horizontal tasi-form"} do |f|
-      .form-group
-        = f.label :full_name, class: "col-sm-1 control-label"
-        div.col-sm-11
-          = f.text_field :full_name, class: "form-control"
+  header.panel-heading
+    h1 Create An Acount
+  div.panel-body
+    .form
+      = form_for @user, :html => {:class => "form-horizontal tasi-form"} do |f|
+        .form-group
+          = f.label :full_name, class: "col-sm-1 control-label"
+          div.col-sm-11
+            = f.text_field :full_name, class: "form-control"
 
-      .form-group
-        = f.label :nickname, class: "col-sm-1 control-label"
-        div.col-sm-11
-          = f.text_field :nickname, class: "form-control"
+        .form-group
+          = f.label :nickname, class: "col-sm-1 control-label"
+          div.col-sm-11
+            = f.text_field :nickname, class: "form-control"
 
-      .form-group
-        = f.label :email, class: "col-sm-1 control-label"
-        div.col-sm-11
-          = f.text_field :email, class: "form-control"
+        .form-group
+          = f.label :email, class: "col-sm-1 control-label"
+          div.col-sm-11
+            = f.text_field :email, class: "form-control"
 
-      .form-group
-        = f.label :password, class: "col-sm-1 control-label"
-        div.col-sm-11
-          = f.password_field :password, class: "form-control"
+        .form-group
+          = f.label :password, class: "col-sm-1 control-label"
+          div.col-sm-11
+            = f.password_field :password, class: "form-control"
 
-      .form-group
-        = f.label :password_confirmation, class: "col-sm-1 control-label"
-        div.col-sm-11
-          = f.password_field :password_confirmation, class: "form-control"
+        .form-group
+          = f.label :password_confirmation, class: "col-sm-1 control-label"
+          div.col-sm-11
+            = f.password_field :password_confirmation, class: "form-control"
 
-      br
-      = f.submit 'Enviar', class: 'btn btn-info'
+        br
+        = f.submit 'Create', class: 'btn btn-info'
 
 
 
