@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :authorize, only: [:destroy, :new, :edit, :index]
+  before_action :authorize_admin, only: [:destroy, :new, :edit, :index]
   def new
   	@category = Category.new
   end

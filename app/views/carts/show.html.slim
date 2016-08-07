@@ -32,7 +32,8 @@
                     = fa_icon "minus-square", class: "dd__primary__color"
                 td
                   = link_to remove_all_from_cart_path(f.item.id) do
-                    span Remove all
+                    span Remove all 
+                    = fa_icon "remove", class: "dd__primary__color"
         .pull-right
           strong Total: &nbsp;
           = @cart.total_price

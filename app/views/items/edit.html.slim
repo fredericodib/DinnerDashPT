@@ -16,4 +16,24 @@
 				= f.label :price, class: "col-sm-1 control-label"
 				div.col-sm-11
 					= f.number_field :price, class: "form-control"
-			= f.submit 'Enviar', class: 'btn btn-info'
+			.form-group
+				= f.label :category, class: "col-sm-2 control-label"
+				div.col-sm-10
+					.row
+						=f.collection_check_boxes :category_ids, @categories, \
+							:id, :name do |category|
+                			.col-sm-2
+                  				= category.check_box class: "icheck-me", \
+                     				data: { 'skin' => 'square', 'color' => 'blue' }
+                  				| &nbsp;
+                  				= category.text
+            .form-group
+        		.col-sm-10.col-sm-offset-2
+          			= f.label :item_photo, "class": "btn btn-default btn-file" do
+            			= f.file_field :item_photo, style: 'display: none'
+            			| Item Photo
+          			| &nbsp;
+          			span.input__file--name
+      		br
+      		div
+				= f.submit 'Enviar', class: 'btn btn-info'

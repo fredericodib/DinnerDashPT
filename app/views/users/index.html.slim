@@ -1,0 +1,43 @@
+= render 'layouts/flash_messages'
+section.content
+	div.panel
+		div.panel-heading
+			h1 All users
+		div.panel-body
+			table.table.table-bordered
+				thead 
+					tr
+						th Nickname
+						th Email
+						th Admin
+						th Change admin
+						th Delete
+				tbody 
+					- @users.each do |c|
+						tr 
+							td = c.nickname
+							td = c.email
+							td 
+								-if c.admin
+									= fa_icon "check", class: "dd__primary__color"
+								- else
+									= fa_icon "remove", class: "dd__primary__color"
+
+
+							- if current_user.id != c.id
+								td
+									= link_to change_admin_path(c.id), method: :patch do
+                    					span Change 
+                    					= fa_icon "refresh", class: "dd__primary__color"
+                    		-else
+                    			td
+                    				h5 Cant change(loged now)
+
+							- if current_user.id != c.id
+								td
+									= link_to destroy_user_path(c.id), method: :delete do
+                    					span Delete 
+                    					= fa_icon "remove", class: "dd__primary__color"
+                    		-else
+                    			td
+                    				h5 Cant delete(loged now)

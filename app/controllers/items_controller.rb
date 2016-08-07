@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authorize, only: [:destroy, :new]
+  before_action :authorize_admin, only: [:destroy, :new, :edit]
   
 	def new
 		@item = Item.new
@@ -18,6 +18,7 @@ class ItemsController < ApplicationController
 
 	def edit
   		@item = Item.find(params[:id])
+      @categories = Category.all
   	end
 
   	def update
@@ -25,9 +26,9 @@ class ItemsController < ApplicationController
   		@item.item_photo = item_photo_param
 
   		if @item.update(items_params)
-  			redirect_to items_path, notice: 'Item created successful'
+  			redirect_to items_path, notice: 'Item edited successful'
   		else
-  			redirect_to edit_item_path(@item.id), alert: 'Error creating item'
+  			redirect_to edit_item_path(@item.id), alert: 'Error editing item'
   		end
   	end
 

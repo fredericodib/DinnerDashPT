@@ -23,4 +23,9 @@ class ApplicationController < ActionController::Base
   def authorize
     redirect_to login_path unless current_user
   end
+
+  def authorize_admin
+    redirect_to root_path, alert: "you can't access this" unless current_user.try(:admin)
+
+  end
 end

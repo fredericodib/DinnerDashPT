@@ -8,12 +8,20 @@ section.content
 				thead 
 					tr
 						th Nome
-						th Ações
+						th Edit
+						th Delete
 				tbody 
 					- @categories.each do |c|
 						tr 
 							td = c.name
 							td 
-								= link_to "Edit", edit_category_path(c.id)
-								| &nbsp;
-								= link_to "Delete", destroy_category_path(c.id), method: :delete
+								= link_to edit_category_path(c.id) do
+                    				span Edit 
+                    				= fa_icon "pencil", class: "dd__primary__color"
+							td
+								= link_to destroy_category_path(c.id), method: :delete do
+                    				span Delete 
+                    				= fa_icon "remove", class: "dd__primary__color"
+            = link_to new_category_path do
+                span New Category 
+                = fa_icon "plus", class: "dd__primary__color"

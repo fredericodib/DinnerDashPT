@@ -14,5 +14,13 @@
         		= link_to add_to_cart_path(item.id) do
           			= fa_icon "cart-plus", class: "dd__primary__color"
 			.pull-left
-          		= link_to "Delete", destroy_item_path(item.id), method: :delete
+				- if current_user.try(:admin)
+          			= link_to destroy_item_path(item.id), method: :delete do
+                    	span Delete 
+                    	= fa_icon "remove", class: "dd__primary__color"
+				
+                	= link_to edit_item_path(item.id) do
+                    	span  Edit 
+                    	= fa_icon "pencil", class: "dd__primary__color"
+                
 			

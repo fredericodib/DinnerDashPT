@@ -9,5 +9,7 @@ class User < ActiveRecord::Base
 	validates :nickname, uniqueness: true
 
 	has_secure_password
+
+
 end
 

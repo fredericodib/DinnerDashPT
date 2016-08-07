@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+	before_action :authorize_admin, only: [:destroy, :index]
+	before_action :authorize, only: [:show]
+
 	def new
 		@user = User.new
 	end
@@ -11,6 +14,30 @@ class UsersController < ApplicationController
 		else
 			redirect_to sign_up_path, alert: 'Error creating your account!'
 		end
+	end
+
+	def index
+		@users = User.all
+	end
+
+	def destroy
+		@user = User.find(params[:id])
+		@user.destroy
+		redirect_to users_path, notice: 'User destroyed successful'
+	end
+
+	def change_admin
+		@user = User.find(params[:id])
+		if @user.admin
+			@user.update_attribute :admin, false
+		else
+			@user.update_attribute :admin, true
+		end
+		redirect_to users_path, notice: 'User admin changed successful'
+	end
+
+	def show
+		@user = @current_user
 	end
 
 	private

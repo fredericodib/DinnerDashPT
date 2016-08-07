@@ -23,6 +23,9 @@ Rails.application.routes.draw do
   
   get '/sign_up' => 'users#new', as: :sign_up
   post '/users' => 'users#create'
+  get '/users' => 'users#index'
+  delete 'users/:id' => 'users#destroy', as: :destroy_user
+  patch 'users/:id' => 'users#change_admin', as: :change_admin
 
   get '/login' => 'sessions#new', as: :login
   post '/login' => 'sessions#create'
