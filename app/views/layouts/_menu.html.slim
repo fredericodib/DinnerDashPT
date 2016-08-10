@@ -7,13 +7,24 @@ aside.left-side.sidebar-offcanvas
 						span Items
 					end
 					br
-				-if current_user
-					li
-						= link_to items_path do
+				li
+					-if current_user
+						= link_to user_path(current_user.id) do
 							i.fa.fa-user
 							span My acount
-						end
-						br
+							end
+					-else
+						= link_to login_path do
+							i.fa.fa-user
+							span My acount
+							end
+					br
+				li
+					= link_to items_path do
+						i.fa.fa-clock-o
+						span My Order
+					end
+					br
 				-if current_user.try(:admin)
 					li
 						= link_to users_path do

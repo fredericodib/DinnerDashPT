@@ -16,11 +16,13 @@
 			.pull-left
 				- if current_user.try(:admin)
           			= link_to destroy_item_path(item.id), method: :delete do
-                    	span Delete 
-                    	= fa_icon "remove", class: "dd__primary__color"
-				
+                    	/span Delete 
+                    	= fa_icon "trash-o", class: "dd__primary__color"
+					| &nbsp;
+					| &nbsp;
+					| &nbsp;
                 	= link_to edit_item_path(item.id) do
-                    	span  Edit 
+                    	/span  Edit 
                     	= fa_icon "pencil", class: "dd__primary__color"
                 
 			

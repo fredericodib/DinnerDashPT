@@ -22,6 +22,7 @@ section.content
 								= link_to destroy_category_path(c.id), method: :delete do
                     				span Delete 
                     				= fa_icon "remove", class: "dd__primary__color"
-            = link_to new_category_path do
-                span New Category 
-                = fa_icon "plus", class: "dd__primary__color"
+            ul.nav.navbar-nav
+            	li = link_to new_category_path do
+                	span New Category 
+                	= fa_icon "plus", class: "dd__primary__color"

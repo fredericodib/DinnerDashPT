@@ -1,0 +1,23 @@
+= render 'layouts/flash_messages'
+.panel
+	.panel-heading
+		h1 your acount
+	.panel-body
+		.form-horizontal
+        	.form-group
+          		h3.col-sm-2 Full name:
+				h3.col-sm-2
+           			= @user.full_name
+           	.form-group
+          		h3.col-sm-2 Nickname:
+				h3.col-sm-2
+           			= @user.nickname
+           	.form-group
+          		h3.col-sm-2 Email:
+				h3.col-sm-2
+           			= @user.email
+
+           	ul.nav.navbar-nav
+        		li = link_to edit_user_path(@user) do
+               		span  Change password 
+               		= fa_icon "pencil", class: "dd__primary__color"

@@ -26,6 +26,9 @@ Rails.application.routes.draw do
   get '/users' => 'users#index'
   delete 'users/:id' => 'users#destroy', as: :destroy_user
   patch 'users/:id' => 'users#change_admin', as: :change_admin
+  get 'users/:id' => 'users#show', as: :user
+  get "users/:id/edit" => "users#edit", as: :edit_user
+  patch "users/:id" => "users#update"
 
   get '/login' => 'sessions#new', as: :login
   post '/login' => 'sessions#create'

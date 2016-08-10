@@ -1,0 +1,23 @@
+= render 'layouts/flash_messages'
+
+section.login-page
+  header.panel-heading
+    h1 Change password
+  div.panel-body
+    .form
+      = form_for @user, :html => {:class => "form-horizontal tasi-form"} do |f|
+        .form-group
+          = f.label :password, class: "col-sm-1 control-label"
+          div.col-sm-11
+            = f.password_field :password, class: "form-control"
+
+        .form-group
+          = f.label :password_confirmation, class: "col-sm-1 control-label"
+          div.col-sm-11
+            = f.password_field :password_confirmation, class: "form-control"
+
+        br
+        = f.submit 'Change', class: 'btn btn-info'
+
+
+
