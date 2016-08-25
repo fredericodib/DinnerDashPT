@@ -1,6 +1,7 @@
 class Cart < ActiveRecord::Base
 	has_many :items_inside, class_name: 'ItemInsideCart'
 
+
 	def empty?
     	items_inside.empty?
   	end

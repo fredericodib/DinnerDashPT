@@ -5,7 +5,7 @@ section.login-page
     h1 Change password
   div.panel-body
     .form
-      = form_for @user, :html => {:class => "form-horizontal tasi-form"} do |f|
+      = form_for @user, :html => {:class => "form-horizontal tasi-form"}, :url => update_user_path do |f|
         .form-group
           = f.label :password, class: "col-sm-1 control-label"
           div.col-sm-11

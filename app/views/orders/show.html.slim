@@ -1,0 +1,64 @@
+.panel
+  .panel-heading
+    h1 My order
+  .panel-body
+    - @orders.each do |o|
+      -if o.order_status.try(:id) == 3
+        .pull-left
+          strong Order Status: &nbsp;
+          = o.order_status.name
+        table.table.table-bordered
+            thead
+              tr
+                th Name
+                th Unit Price
+                th Quantity
+                th Item Total Pric
+            tbody
+              - o.cart.items_inside.each do |f|
+                tr
+                  td = f.item.name
+                  td = f.item.price
+                  td = f.quantity
+                  td = f.sub_total
+                    
+        .pull-left
+          = link_to cancel_order_path(o.id) do
+            span Cancel order &nbsp;
+
+        .pull-right
+          strong Total: &nbsp;
+          = o.cart.total_price
+        br
+        br
+
+    - @orders.each do |o|
+      -if o.order_status.try(:id) == 1
+        .pull-left
+          strong Order Status: &nbsp;
+          = o.order_status.name
+        table.table.table-bordered
+            thead
+              tr
+                th Name
+                th Unit Price
+                th Quantity
+                th Item Total Pric
+            tbody
+              - o.cart.items_inside.each do |f|
+                tr
+                  td = f.item.name
+                  td = f.item.price
+                  td = f.quantity
+                  td = f.sub_total
+                    
+        .pull-left
+          = link_to cancel_order_path(o.id) do
+            span Cancel order &nbsp;
+
+        .pull-right
+          strong Total: &nbsp;
+          = o.cart.total_price
+        br
+        br
+

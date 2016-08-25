@@ -41,6 +41,9 @@
 
       ul.nav.navbar-nav
         li = link_to root_path do
-          span Voltar para navegação
+          span Back &nbsp;
+        -if !@cart.empty?
+          li = link_to add_order_path do
+            span Send order
                 
         

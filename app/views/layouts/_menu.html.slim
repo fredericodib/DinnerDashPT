@@ -20,12 +20,24 @@ aside.left-side.sidebar-offcanvas
 							end
 					br
 				li
-					= link_to items_path do
-						i.fa.fa-clock-o
-						span My Order
-					end
+					-if current_user
+						= link_to my_order_path(current_user.id) do
+							i.fa.fa-clock-o
+							span My order
+							end
+					-else
+						= link_to login_path do
+							i.fa.fa-clock-o
+							span My order
+							end
 					br
 				-if current_user.try(:admin)
+					li
+						= link_to orders_path do
+							i.fa.fa-dashboard
+							span Dashboard
+						end
+						br
 					li
 						= link_to users_path do
 							i.fa.fa-users

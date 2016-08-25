@@ -1,28 +1,34 @@
-.col-md-3.item__panel
-	.panel
-		.panel-heading.card__title
-			h4 = item.name
-		.panel-body.card__title
-			= image_tag item.item_photo.url, class: "center-block"
-			br
-			.row
-				.col-sm-9
-					p = item.description
-				.col-sm-3
-					span = item.price
-			.pull-right
-        		= link_to add_to_cart_path(item.id) do
-          			= fa_icon "cart-plus", class: "dd__primary__color"
-			.pull-left
-				- if current_user.try(:admin)
-          			= link_to destroy_item_path(item.id), method: :delete do
-                    	/span Delete 
-                    	= fa_icon "trash-o", class: "dd__primary__color"
-					| &nbsp;
-					| &nbsp;
-					| &nbsp;
-                	= link_to edit_item_path(item.id) do
-                    	/span  Edit 
-                    	= fa_icon "pencil", class: "dd__primary__color"
-                
-			
+-if item.active || current_user.try(:admin)
+	.col-md-3.item__panel
+		.panel
+			.panel-heading.card__title
+				h4 = item.name
+			.panel-body.card__title
+				= image_tag item.item_photo.url, class: "center-block"
+				br
+				.row
+					.col-sm-9
+						p = item.description
+					.col-sm-3
+						span = item.price
+				.pull-right
+		    		= link_to add_to_cart_path(item.id) do
+		      			= fa_icon "cart-plus", class: "dd__primary__color"
+				.pull-left
+					- if current_user.try(:admin)
+		      			= link_to active_change_path(item.id) do
+		                	/span Delete 
+		                	-if item.active == true
+		                		= fa_icon "close", class: "dd__primary__color"
+		                	-else
+		                		span Item indisponivel 
+		                		= fa_icon "refresh", class: "dd__primary__color"
+		                
+						| &nbsp;
+						| &nbsp;
+						| &nbsp;
+		            	= link_to edit_item_path(item.id) do
+		                	/span  Edit 
+		                	= fa_icon "pencil", class: "dd__primary__color"
+	                
+				

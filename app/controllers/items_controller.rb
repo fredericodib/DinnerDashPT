@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
 	def create
 		@item = Item.new (items_params)
 		@item.item_photo = item_photo_param
-		
+		@item.active = true
   		if @item.save
   			redirect_to items_path, notice: 'Item created sucessful'
   		else
@@ -56,6 +56,16 @@ class ItemsController < ApplicationController
 		@items = Item.all
 		@categories = Category.all
 	end
+
+  def active_change
+    @item = Item.find(params[:id])
+    if @item.active
+      @item.update_attribute :active, false
+    else
+      @item.update_attribute :active, true
+    end
+    redirect_to root_path, notice: 'Active item chenged'
+  end
 
 	private
   		def items_params

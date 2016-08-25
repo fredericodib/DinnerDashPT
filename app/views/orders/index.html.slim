@@ -1,0 +1,40 @@
+.panel
+  .panel-heading
+    h1 All orders
+  .panel-body
+    - @users.each do |u|
+      - u.order.each do |o|
+        -if ((o.order_status.try(:id) == 3) || (o.order_status.try(:id) == 1)) && (o.cart != nil)
+          h2
+            =u.nickname
+          .pull-left
+            strong Order Status: &nbsp;
+            = o.order_status.name
+          table.table.table-bordered
+              thead
+                tr
+                  th Name
+                  th Unit Price
+                  th Quantity
+                  th Item Total Pric
+              tbody
+                - o.cart.items_inside.each do |f|
+                  tr
+                    td = f.item.name
+                    td = f.item.price
+                    td = f.quantity
+                    td = f.sub_total
+
+          .pull-right
+            strong Total: &nbsp;
+            = o.cart.total_price
+          
+          
+          
+          .form-group.order__status
+            div.orderGetId data-id=( o.id ) 
+              -@order_status.each do |y|
+                =label_tag y.name, nil, class: "radio-inline"
+                =radio_button_tag 'order_status', y.id
+          br
+          br

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 	before_action :authorize_admin, only: [:destroy, :index]
 	before_action :authorize, only: [:show]
-	before_action :set_user, only: [:create, :destroy, :change_admin, :edit, :update]
+	before_action :set_user, only: [:destroy, :change_admin, :edit, :update]
 
 	def new
 		@user = User.new
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
 
 	def update
 		if @user.update(user_params)
-  			redirect_to user_path(user.id), notice: 'User password changed successful'
+  			redirect_to user_path(@user.id), notice: 'User password changed successful'
   		else
   			redirect_to edit_user_path(@user.id), alert: 'Error changing password'
   		end
@@ -58,4 +58,6 @@ class UsersController < ApplicationController
 	def user_params  
 		params.require(:user).permit(:full_name, :nickname, :email, :password, :password_confirmation)
 	end
+
+
 end

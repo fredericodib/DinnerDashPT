@@ -1,0 +1,66 @@
+.panel
+  .panel-heading
+    h1 My order
+  .panel-body
+    - @orders.each do |o|
+      -if o.order_status.id == 4
+        .pull-left
+          strong Order Status: &nbsp;
+          = o.order_status.name
+        table.table.table-bordered
+            thead
+              tr
+                th Name
+                th Unit Price
+                th Quantity
+                th Item Total Pric
+            tbody
+              - o.cart.items_inside.each do |f|
+                tr
+                  td = f.item.name
+                  td = f.item.price
+                  td = f.quantity
+                  td = f.sub_total
+                    
+        .pull-left
+          strong Hora do cancelamento: &nbsp;
+          = o.updated_at
+
+        .pull-right
+          strong Total: &nbsp;
+          = o.cart.total_price
+        br
+        br
+        br
+
+
+    - @orders.each do |o|
+      -if o.order_status.id == 2
+        .pull-left
+          strong Order Status: &nbsp;
+          = o.order_status.name
+        table.table.table-bordered
+            thead
+              tr
+                th Name
+                th Unit Price
+                th Quantity
+                th Item Total Pric
+            tbody
+              - o.cart.items_inside.each do |f|
+                tr
+                  td = f.item.name
+                  td = f.item.price
+                  td = f.quantity
+                  td = f.sub_total
+                    
+        .pull-left
+          strong Hora da entrega: &nbsp;
+          = o.updated_at
+
+        .pull-right
+          strong Total: &nbsp;
+          = o.cart.total_price
+        br
+        br
+        br
